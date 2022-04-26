@@ -361,7 +361,7 @@ const Shop = () => {
                     <div className="row">
                         <div className="col-lg-4 col-md-6 col-sm-6">
                             <div className="product__item">
-                                <div className="product__item__pic set-bg" data-setbg="img/product/product-1.jpg">
+                                <div className="product__item__pic set-bg" style={{ backgroundImage: `url(img/product/product-1.jpg)` }}>
                                     <ul className="product__item__pic__hover">
                                         <li><a href="#"><i className="fa fa-heart"></i></a></li>
                                         <li><a href="#"><i className="fa fa-retweet"></i></a></li>
@@ -376,7 +376,7 @@ const Shop = () => {
                         </div>
                         <div className="col-lg-4 col-md-6 col-sm-6">
                             <div className="product__item">
-                                <div className="product__item__pic set-bg" data-setbg="img/product/product-2.jpg">
+                                <div className="product__item__pic set-bg" style={{ backgroundImage: `url(img/product/product-2.jpg)` }}>
                                     <ul className="product__item__pic__hover">
                                         <li><a href="#"><i className="fa fa-heart"></i></a></li>
                                         <li><a href="#"><i className="fa fa-retweet"></i></a></li>
@@ -391,7 +391,7 @@ const Shop = () => {
                         </div>
                         <div className="col-lg-4 col-md-6 col-sm-6">
                             <div className="product__item">
-                                <div className="product__item__pic set-bg" data-setbg="img/product/product-3.jpg">
+                                <div className="product__item__pic set-bg" style={{ backgroundImage: `url(img/product/product-3.jpg)` }}>
                                     <ul className="product__item__pic__hover">
                                         <li><a href="#"><i className="fa fa-heart"></i></a></li>
                                         <li><a href="#"><i className="fa fa-retweet"></i></a></li>
@@ -406,7 +406,7 @@ const Shop = () => {
                         </div>
                         <div className="col-lg-4 col-md-6 col-sm-6">
                             <div className="product__item">
-                                <div className="product__item__pic set-bg" data-setbg="img/product/product-4.jpg">
+                                <div className="product__item__pic set-bg" style={{ backgroundImage: `url(img/product/product-4.jpg)` }}>
                                     <ul className="product__item__pic__hover">
                                         <li><a href="#"><i className="fa fa-heart"></i></a></li>
                                         <li><a href="#"><i className="fa fa-retweet"></i></a></li>
@@ -421,7 +421,7 @@ const Shop = () => {
                         </div>
                         <div className="col-lg-4 col-md-6 col-sm-6">
                             <div className="product__item">
-                                <div className="product__item__pic set-bg" data-setbg="img/product/product-5.jpg">
+                                <div className="product__item__pic set-bg" style={{ backgroundImage: `url(img/product/product-5.jpg)` }}>
                                     <ul className="product__item__pic__hover">
                                         <li><a href="#"><i className="fa fa-heart"></i></a></li>
                                         <li><a href="#"><i className="fa fa-retweet"></i></a></li>
@@ -436,7 +436,7 @@ const Shop = () => {
                         </div>
                         <div className="col-lg-4 col-md-6 col-sm-6">
                             <div className="product__item">
-                                <div className="product__item__pic set-bg" data-setbg="img/product/product-6.jpg">
+                                <div className="product__item__pic set-bg" style={{ backgroundImage: `url(img/product/product-6.jpg)` }}>
                                     <ul className="product__item__pic__hover">
                                         <li><a href="#"><i className="fa fa-heart"></i></a></li>
                                         <li><a href="#"><i className="fa fa-retweet"></i></a></li>
@@ -451,7 +451,7 @@ const Shop = () => {
                         </div>
                         <div className="col-lg-4 col-md-6 col-sm-6">
                             <div className="product__item">
-                                <div className="product__item__pic set-bg" data-setbg="img/product/product-7.jpg">
+                                <div className="product__item__pic set-bg" style={{ backgroundImage: `url(img/product/product-7.jpg)` }}>
                                     <ul className="product__item__pic__hover">
                                         <li><a href="#"><i className="fa fa-heart"></i></a></li>
                                         <li><a href="#"><i className="fa fa-retweet"></i></a></li>
@@ -466,7 +466,7 @@ const Shop = () => {
                         </div>
                         <div className="col-lg-4 col-md-6 col-sm-6">
                             <div className="product__item">
-                                <div className="product__item__pic set-bg" data-setbg="img/product/product-8.jpg">
+                                <div className="product__item__pic set-bg" style={{ backgroundImage: `url(img/product/product-8.jpg)` }}>
                                     <ul className="product__item__pic__hover">
                                         <li><a href="#"><i className="fa fa-heart"></i></a></li>
                                         <li><a href="#"><i className="fa fa-retweet"></i></a></li>
@@ -481,7 +481,7 @@ const Shop = () => {
                         </div>
                         <div className="col-lg-4 col-md-6 col-sm-6">
                             <div className="product__item">
-                                <div className="product__item__pic set-bg" data-setbg="img/product/product-9.jpg">
+                                <div className="product__item__pic set-bg" style={{ backgroundImage: `url(img/product/product-9.jpg)` }}>
                                     <ul className="product__item__pic__hover">
                                         <li><a href="#"><i className="fa fa-heart"></i></a></li>
                                         <li><a href="#"><i className="fa fa-retweet"></i></a></li>
@@ -496,7 +496,7 @@ const Shop = () => {
                         </div>
                         <div className="col-lg-4 col-md-6 col-sm-6">
                             <div className="product__item">
-                                <div className="product__item__pic set-bg" data-setbg="img/product/product-10.jpg">
+                                <div className="product__item__pic set-bg" style={{ backgroundImage: `url(img/product/product-10.jpg)` }}>
                                     <ul className="product__item__pic__hover">
                                         <li><a href="#"><i className="fa fa-heart"></i></a></li>
                                         <li><a href="#"><i className="fa fa-retweet"></i></a></li>
@@ -511,7 +511,7 @@ const Shop = () => {
                         </div>
                         <div className="col-lg-4 col-md-6 col-sm-6">
                             <div className="product__item">
-                                <div className="product__item__pic set-bg" data-setbg="img/product/product-11.jpg">
+                                <div className="product__item__pic set-bg" style={{ backgroundImage: `url(img/product/product-11.jpg)` }}>
                                     <ul className="product__item__pic__hover">
                                         <li><a href="#"><i className="fa fa-heart"></i></a></li>
                                         <li><a href="#"><i className="fa fa-retweet"></i></a></li>
@@ -526,7 +526,7 @@ const Shop = () => {
                         </div>
                         <div className="col-lg-4 col-md-6 col-sm-6">
                             <div className="product__item">
-                                <div className="product__item__pic set-bg" data-setbg="img/product/product-12.jpg">
+                                <div className="product__item__pic set-bg" style={{ backgroundImage: `url(img/product/product-12.jpg)` }}>
                                     <ul className="product__item__pic__hover">
                                         <li><a href="#"><i className="fa fa-heart"></i></a></li>
                                         <li><a href="#"><i className="fa fa-retweet"></i></a></li>

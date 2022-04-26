@@ -52,7 +52,7 @@ const Header = () => {
                       <nav className="header__menu">
                           <ul>
                               <li className="active"><a href="./index.html">Home</a></li>
-                              <li><a href="./shop-grid.html">Shop</a></li>
+                              <li><a href="/shop">Shop</a></li>
                               <li><a href="#">Pages</a>
                                   <ul className="header__menu__dropdown">
                                       <li><a href="./shop-details.html">Shop Details</a></li>
