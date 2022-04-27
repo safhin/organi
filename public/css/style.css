@@ -787,7 +787,7 @@ ol {
 	max-width: 100%;
 }
 
-.categories__slider.owl-carousel .owl-nav button {
+.categories__slider.owl-carousel .slick-slider button {
 	font-size: 18px;
 	color: #1c1c1c;
 	height: 70px;
@@ -802,7 +802,7 @@ ol {
 	background: #ffffff;
 }
 
-.categories__slider.owl-carousel .owl-nav button.owl-next {
+.categories__slider.owl-carousel .slick-slider button.slick-next {
 	left: auto;
 	right: -35px;
 }

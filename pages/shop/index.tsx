@@ -1,6 +1,6 @@
-import BreadCrumb from "../components/breadcrumb/breadCrumb";
-import Footer from "../components/footer/footer";
-import Header from "../components/header/header";
+import BreadCrumb from "../../components/breadcrumb/breadCrumb";
+import Footer from "../../components/footer/footer";
+import Header from "../../components/header/header";
 import Head from "next/head";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -83,37 +83,37 @@ const Shop = () => {
                                 <div className="sidebar__item sidebar__item__color--option">
                                     <h4>Colors</h4>
                                     <div className="sidebar__item__color sidebar__item__color--white">
-                                        <label for="white">
+                                        <label htmlFor="white">
                                             White
                                             <input type="radio" id="white"/>
                                         </label>
                                     </div>
                                     <div className="sidebar__item__color sidebar__item__color--gray">
-                                        <label for="gray">
+                                        <label htmlFor="gray">
                                             Gray
                                             <input type="radio" id="gray"/>
                                         </label>
                                     </div>
                                     <div className="sidebar__item__color sidebar__item__color--red">
-                                        <label for="red">
+                                        <label htmlFor="red">
                                             Red
                                             <input type="radio" id="red"/>
                                         </label>
                                     </div>
                                     <div className="sidebar__item__color sidebar__item__color--black">
-                                        <label for="black">
+                                        <label htmlFor="black">
                                             Black
                                             <input type="radio" id="black"/>
                                         </label>
                                     </div>
                                     <div className="sidebar__item__color sidebar__item__color--blue">
-                                        <label for="blue">
+                                        <label htmlFor="blue">
                                             Blue
                                             <input type="radio" id="blue"/>
                                         </label>
                                     </div>
                                     <div className="sidebar__item__color sidebar__item__color--green">
-                                        <label for="green">
+                                        <label htmlFor="green">
                                             Green
                                             <input type="radio" id="green"/>
                                         </label>
@@ -122,25 +122,25 @@ const Shop = () => {
                                 <div className="sidebar__item">
                                     <h4>Popular Size</h4>
                                     <div className="sidebar__item__size">
-                                        <label for="large">
+                                        <label htmlFor="large">
                                             Large
                                             <input type="radio" id="large"/>
                                         </label>
                                     </div>
                                     <div className="sidebar__item__size">
-                                        <label for="medium">
+                                        <label htmlFor="medium">
                                             Medium
                                             <input type="radio" id="medium"/>
                                         </label>
                                     </div>
                                     <div className="sidebar__item__size">
-                                        <label for="small">
+                                        <label htmlFor="small">
                                             Small
                                             <input type="radio" id="small"/>
                                         </label>
                                     </div>
                                     <div className="sidebar__item__size">
-                                        <label for="tiny">
+                                        <label htmlFor="tiny">
                                             Tiny
                                             <input type="radio" id="tiny"/>
                                         </label>

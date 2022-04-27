@@ -8,17 +8,37 @@ import CategoryImg3 from "../../public/img/categories/cat-3.jpg";
 import CategoryImg4 from "../../public/img/categories/cat-4.jpg";
 import Image from 'next/image';
 
+function NextArrow(props : any) {
+    const { onClick } = props;
+    return (
+        <button className='slick-next' onClick={onClick}>
+            <span className="fa fa-angle-right"> </span>
+        </button>
+    );
+}
+  
+function PrevArrow(props : any) {
+    const { onClick } = props;
+    return (
+        <button className='slick-prev' onClick={onClick}>
+            <span className="fa fa-angle-left"></span>
+        </button>
+    );
+}
+
  const Category = () => {
     var settings = {
         dots: false,
         infinite: true,
         slidesToShow: 4,
-        slidesToScroll: 1,
-        arrows:false,
-        autoplay: true,
-        speed: 2000,
+        slidesToScroll: 2,
+        arrows:true,
+        autoplay: false,
+        speed: 500,
         autoplaySpeed: 2000,
         cssEase: "linear",
+        nextArrow: <NextArrow/>,
+        prevArrow: <PrevArrow/>,
         responsive: [
             {
               breakpoint: 1025,
