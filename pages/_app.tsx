@@ -1,6 +1,7 @@
 import type { AppProps } from 'next/app'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "../public/css/font-awesome.min.css";
+import "../public/css/elegant-icons.css";
 import "../public/css/style.css";
 import Head from 'next/head';
 

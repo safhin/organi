@@ -1,7 +1,6 @@
 import BreadCrumb from "../../components/breadcrumb/breadCrumb";
 import Footer from "../../components/footer/footer";
 import Header from "../../components/header/header";
-import Head from "next/head";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from "react-slick";
@@ -42,7 +41,7 @@ const Shop = () => {
     return(
         <>
             <Header/>
-            <BreadCrumb/>
+            <BreadCrumb bgImage={'/img/breadcrumb.jpg'} secTitle="Shop"/>
             <section className="product spad">
                 <div className="container">
                     <div className="row">
@@ -69,8 +68,8 @@ const Shop = () => {
                                         <div className="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
                                             data-min="10" data-max="540">
                                             <div className="ui-slider-range ui-corner-all ui-widget-header"></div>
-                                            <span tabindex="0" className="ui-slider-handle ui-corner-all ui-state-default"></span>
-                                            <span tabindex="0" className="ui-slider-handle ui-corner-all ui-state-default"></span>
+                                            <span tabIndex={0} className="ui-slider-handle ui-corner-all ui-state-default"></span>
+                                            <span tabIndex={0} className="ui-slider-handle ui-corner-all ui-state-default"></span>
                                         </div>
                                         <div className="range-slider">
                                             <div className="price-input">
