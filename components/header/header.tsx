@@ -13,8 +13,14 @@ const Header = () => {
                 </div>
                 <div className="humberger__menu__cart">
                     <ul>
-                        <li><a href="#"><i className="fa fa-heart"></i> <span>1</span></a></li>
-                        <li><a href="#"><i className="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                        <li>
+                            <a href="#"><i className="fa fa-heart"></i> <span>1</span></a>
+                        </li>
+                        <li>
+                            <Link href="/cart">
+                                <a><i className="fa fa-shopping-bag"></i> <span>4</span></a>
+                            </Link>
+                        </li>
                     </ul>
                     <div className="header__cart__price">item: <span>$150.00</span></div>
                 </div>
@@ -111,22 +117,22 @@ const Header = () => {
                         <div className="col-lg-6">
                             <nav className="header__menu">
                                 <ul>
-                                    <li className="active">
+                                    <li className="mainMenu active">
                                         <Link href={'/'}>
                                             <a>Home</a>
                                         </Link>
                                     </li>
-                                    <li>
+                                    <li className="mainMenu">
                                         <Link href="/shop">
                                             <a>Shop</a>
                                         </Link>
                                     </li>
-                                    <li>
+                                    <li className="mainMenu">
                                         <Link href={'/blog'}>
                                             <a>Blog</a>
                                         </Link>
                                     </li>
-                                    <li>
+                                    <li className="mainMenu">
                                         <Link href={'/contact'}>
                                             <a>Contact</a>
                                         </Link>
@@ -138,7 +144,11 @@ const Header = () => {
                             <div className="header__cart">
                                 <ul>
                                     <li><a href="#"><i className="fa fa-heart"></i> <span>1</span></a></li>
-                                    <li><a href="#"><i className="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                                    <li>
+                                        <Link href="/cart">
+                                            <a><i className="fa fa-shopping-bag"></i> <span>4</span></a>
+                                        </Link>
+                                    </li>
                                 </ul>
                                 <div className="header__cart__price">item: <span>$150.00</span></div>
                             </div>
