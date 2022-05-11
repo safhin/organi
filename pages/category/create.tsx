@@ -39,14 +39,9 @@ const CreateCategory = ({Categories}) => {
             body: JSON.stringify(category)
         });
 
-        if(!response.ok){
-            throw new Error(response.statusText)
-        }
         document.querySelector('.form').reset();
         return await response.json();
     }
-
-    console.log(Categories);
 
     return(
         <>
@@ -101,13 +96,15 @@ const CreateCategory = ({Categories}) => {
                                         </thead>
                                         <tbody>
                                            {
-                                               Categories.map((item, index) => (
+                                               Categories.length > 0 && Categories.map((item, index) => (
                                                     <tr key={item.id}>
                                                         <td className="text-bold-500">{item.id}</td>
                                                         <td>{item.category_title}</td>
                                                         <td className="text-bold-500">{item.category_slug}</td>
                                                         <td>
-                                                            <Link href={"/category/edit"}>
+                                                            <Link href={{
+                                                                pathname : `/category/${item.id}`
+                                                            }}>
                                                                 <a className="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="left" title="" data-original-title="Update">
                                                                     <i className="bi bi-pencil" aria-hidden="true"></i>
                                                                 </a>
