@@ -1,23 +1,42 @@
-import { GetStaticProps } from "next";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { PrismaClient } from "@prisma/client";
+import { useState } from "react";
+
+const prisma = new PrismaClient();
+
+export const getServerSideProps = async(context) => {
+    const {id} = context.query;
+    const res = await prisma.categories.findUnique({
+        where:{
+            id: parseInt(id)
+        }
+    });
+
+    const category = JSON.parse(JSON.stringify(res))
+    return{
+        props:{
+            editCategory : category
+        }
+    }
+}
 
 
-const UpdateCategory = () => {
+const UpdateCategory = ({editCategory}) => {
 
-    const [categoryTitle, setCategoryTitle] = useState('');
-
+    const [categoryTitle, setCategoryTitle] = useState(editCategory.category_title);
+    
     const handleSubmit = async(e) => {
+
         e.preventDefault();
+
         const category = {
+            id: editCategory.id,
             category_title : categoryTitle,
             category_slug : categoryTitle,
         }
 
         e.preventDefault();
-        const response = await fetch('/api/category', {
-            method: 'POST',
+        const response = await fetch(`/api/category/${editCategory.id}`, {
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -28,23 +47,6 @@ const UpdateCategory = () => {
         return await response.json();
     }
 
-    const router = useRouter();
-    const id = router.query.id;
-
-    useEffect(() => {
-        const fetchtCategory = async() => {
-            const response = await fetch(`/api/category/${id}`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
-            return await response.json();
-        }
-        fetchtCategory();
-    },[])
-    
-
     return(
         <>
             <section id="basic-vertical-layouts">
@@ -52,7 +54,7 @@ const UpdateCategory = () => {
                     <div className="col-md-6 col-sm-6 offset-md-3 offset-sm-3">
                         <div className="card">
                             <div className="card-header">
-                                <h4 className="card-title">Add Category</h4>
+                                <h4 className="card-title">Update Category</h4>
                             </div>
                             <div className="card-content">
                                 <div className="card-body">
@@ -62,12 +64,18 @@ const UpdateCategory = () => {
                                                 <div className="col-12">
                                                     <div className="form-group">
                                                         <label htmlFor="first-name-vertical">Category Title</label>
-                                                        <input type="text" id="first-name-vertical" className="form-control" name="category_title" placeholder="Category Name" onInput={e => setCategoryTitle(e.target.value)}/>
+                                                        <input 
+                                                            type="text" 
+                                                            className="form-control" 
+                                                            name="category_title" 
+                                                            placeholder="Category Name" 
+                                                            value={categoryTitle} 
+                                                            onChange={e => setCategoryTitle(e.target.value)}
+                                                        />
                                                     </div>
                                                 </div>
                                                 <div className="col-12 d-flex justify-content-end">
-                                                    <button type="submit" className="btn btn-primary me-1 mb-1">Submit</button>
-                                                    <button type="reset" className="btn btn-light-secondary me-1 mb-1">Reset</button>
+                                                    <button type="submit" className="btn btn-primary me-1 mb-1">Update</button>
                                                 </div>
                                             </div>
                                         </div>

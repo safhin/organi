@@ -43,6 +43,20 @@ const CreateCategory = ({Categories}) => {
         return await response.json();
     }
 
+    const handleClick = async(id) => {
+        const catId = {
+            id : id
+        }
+        const response = await fetch(`/api/category/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(catId)
+        });
+        return await response.json();
+    }
+
     return(
         <>
             <section id="basic-vertical-layouts">
@@ -109,9 +123,9 @@ const CreateCategory = ({Categories}) => {
                                                                     <i className="bi bi-pencil" aria-hidden="true"></i>
                                                                 </a>
                                                             </Link>
-                                                            <button type="button" className="btn btn-danger btn-sm" data-bs-toggle="modal">
-                                                                    <i className="bi bi-trash"></i>
-                                                                </button>
+                                                            <button type="button" className="btn btn-danger btn-sm" onClick={() => handleClick(item.id)} id="1">
+                                                                <i className="bi bi-trash"></i>
+                                                            </button>
                                                         </td>
                                                     </tr>
                                                ))

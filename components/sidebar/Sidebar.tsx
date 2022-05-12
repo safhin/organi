@@ -4,8 +4,8 @@ import Link from "next/link";
 import Logo from "../../public/assets/images/logo/logo.png";
 const Sidebar = () => {
 
-    const handleMenu = () => {
-        const subMenuElem = document.querySelector('.submenu');
+    const handleMenu = (menuClass : string) => {
+        const subMenuElem = document.querySelector('#' + menuClass);
         
         if(subMenuElem?.style.display == 'none'){
             subMenuElem.style.display = 'block';
@@ -20,9 +20,11 @@ const Sidebar = () => {
                 <div className="sidebar-header">
                     <div className="d-flex justify-content-between">
                         <div className="logo">
-                            <a href="index.html">
-                                <Image src={Logo} alt="Logo"/>
-                            </a>
+                            <Link href={'/'}>
+                                <a>
+                                    <Image src={Logo} alt="Logo"/>
+                                </a>
+                            </Link>
                         </div>
                         <div className="toggler">
                             <a href="#" className="sidebar-hide d-xl-none d-block"><i className="bi bi-x bi-middle"></i></a>
@@ -41,23 +43,30 @@ const Sidebar = () => {
                         </li>
 
                         <li className="sidebar-item  has-sub">
-                            <a href="#" className='sidebar-link' onClick={handleMenu}>
+                            <a href="#" className='sidebar-link' onClick={() => handleMenu('category-submenu')}>
                                 <i className="bi bi-stack"></i>
                                 <span>Categories</span>
                             </a>
-                            <ul className="submenu" style={{ display: 'none' }}>
+                            <ul className="submenu" id="category-submenu" style={{ display: 'none' }}>
                                 <li className="submenu-item ">
-                                    <Link href={'/category/create'}>
+                                    <Link href={'/category'}>
                                         <a>Create</a>
                                     </Link>
                                 </li>
                             </ul>
                         </li>
                         <li className="sidebar-item  has-sub">
-                            <a href="#" className='sidebar-link'>
+                            <a href="#" className='sidebar-link' onClick={() => handleMenu('product-submenu')}>
                                 <i className="bi bi-stack"></i>
                                 <span>Product</span>
                             </a>
+                            <ul className="submenu" id="product-submenu" style={{ display: 'none' }}>
+                                <li className="submenu-item ">
+                                    <Link href={'/product/create'}>
+                                        <a>Create</a>
+                                    </Link>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </div>

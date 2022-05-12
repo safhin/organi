@@ -17,3 +17,12 @@ model Categories{
   created_at DateTime @default(now())
   updated_at DateTime
 }
+
+model Products{
+  id Int @id @default(autoincrement())
+  product_title String
+  product_price String
+  product_category String
+  created_at DateTime @default(now())
+  updated_at DateTime
+}
