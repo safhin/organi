@@ -62,8 +62,13 @@ const Sidebar = () => {
                             </a>
                             <ul className="submenu" id="product-submenu" style={{ display: 'none' }}>
                                 <li className="submenu-item ">
-                                    <Link href={'/product/create'}>
+                                    <Link href={'/products/create'}>
                                         <a>Create</a>
+                                    </Link>
+                                </li>
+                                <li className="submenu-item ">
+                                    <Link href={'/products'}>
+                                        <a>Products</a>
                                     </Link>
                                 </li>
                             </ul>

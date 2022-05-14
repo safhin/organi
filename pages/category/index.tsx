@@ -17,7 +17,7 @@ export const getStaticProps : GetStaticProps = async () => {
         Categories : data
       }
     }
-  }
+}
 
 const CreateCategory = ({Categories}) => {
 

@@ -20,5 +20,12 @@ export default async(req: NextApiRequest, res: NextApiResponse) =>{
         } catch (error) {
             res.status(400).json({ message: error.message});
         }
+    }else if(req.method == 'GET'){
+        try {
+            const Products = await prisma.products.findMany();
+            res.status(200).json(Products);
+        } catch (error) {
+            res.status(400).json({ message: error.message});
+        }
     }
 }

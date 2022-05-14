@@ -20,7 +20,7 @@ export const getServerSideProps = async(context) => {
 }
 
 
-const UpdateCategory = ({editCategory}) => {
+const UpdateCategory = ({editCategory : []}) => {
 
     const [categoryTitle, setCategoryTitle] = useState(editCategory.category_title);
     
@@ -34,7 +34,6 @@ const UpdateCategory = ({editCategory}) => {
             category_slug : categoryTitle,
         }
 
-        e.preventDefault();
         const response = await fetch(`/api/category/${editCategory.id}`, {
             method: 'PUT',
             headers: {

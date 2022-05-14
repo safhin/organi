@@ -1,26 +1,44 @@
+import { useState } from "react";
 
 
-const CreateProduct = () => {
+export const getServerSideProps = async () => {
+    const responseCategory = await fetch('http://localhost:3000/api/category',{
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+    const categoryData = await responseCategory.json();
+  
+    return {
+      props : {
+        Categories : categoryData
+      }
+    }
+}
 
+
+const CreateProduct = ({Categories}) => {
+
+    const [productInput,setProductInput] = useState({});
+    const handleChange = (e) => {
+        const{name, value} = e.target;
+        setProductInput({
+            ...productInput,
+            [name]:value
+        })
+    }
+    
     const handleSubmit = async(e) => {
         e.preventDefault();
-
-        const ProductData = {
-            id: 1,
-            product_title: 'Test',
-            product_category: 'Test cat',
-            product_price: '120',
-            updated_at: new Date()
-        }
 
         const response = await fetch('/api/product', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(ProductData)
+            body: JSON.stringify(productInput)
         })
-        console.log(response);
         return await response.json();
     }
 
@@ -40,23 +58,27 @@ const CreateProduct = () => {
                                                 <div className="col-6">
                                                     <div className="form-group">
                                                         <label htmlFor="first-name-vertical">Product Title</label>
-                                                        <input type="text" id="first-name-vertical" className="form-control" name="product_title" placeholder="Category Name"/>
+                                                        <input type="text" id="first-name-vertical" className="form-control" name="product_title" placeholder="Category Name" onChange={handleChange}/>
                                                     </div>
                                                 </div>
                                                 <div className="col-6">
                                                     <fieldset className="form-group">
                                                         <label htmlFor="first-name-vertical">Category</label>
-                                                        <select className="form-select" id="basicSelect" name="product_category">
-                                                            <option>IT</option>
-                                                            <option>Blade Runner</option>
-                                                            <option>Thor Ragnarok</option>
+                                                        <select className="form-select" id="basicSelect" name="product_category" onChange={handleChange}>
+                                                            <option value="">Select Category</option>
+                                                            {
+                                                                Categories.length > 0 && Categories.map((category) => (
+                                                                    <option value={category.category_title} key={category.id}>{ category.category_title }</option>
+                                                                ))
+                                                            }
+                                                            
                                                         </select>
                                                     </fieldset>
                                                 </div>
                                                 <div className="col-md-6 col-sm-6">
                                                     <div className="form-group">
                                                         <label htmlFor="first-name-vertical">Product Price</label>
-                                                        <input type="text" id="first-name-vertical" className="form-control" name="product_price" placeholder="Price"/>
+                                                        <input type="text" id="first-name-vertical" className="form-control" name="product_price" placeholder="Price" onChange={handleChange}/>
                                                     </div>
                                                 </div>
                                                 <div className="col-12 d-flex justify-content-end">
