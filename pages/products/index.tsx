@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -47,6 +48,7 @@ const AllProducts = ({Products}) => {
                                             <th>TITLE</th>
                                             <th>PRODUCT CATEGORY</th>
                                             <th>PRODUCT PRICE</th>
+                                            <th>PRODUCT IMAGE</th>
                                             <th>ACTION</th>
                                         </tr>
                                     </thead>
@@ -58,7 +60,8 @@ const AllProducts = ({Products}) => {
                                                     <td>{product.product_title}</td>
                                                     <td>{product.product_category}</td>
                                                     <td className="text-bold-500">{product.product_price}</td>
-                                                    <td>
+                                                    <td><Image src={product.product_image} alt="" width={100} height={100}/></td>
+                                                    <td> 
                                                         <Link href={{
                                                             pathname : `/products/${product.id}`
                                                         }}>

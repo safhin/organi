@@ -23,6 +23,7 @@ model Products{
   product_title String
   product_price String
   product_category String
+  product_image String
   created_at DateTime @default(now())
   updated_at DateTime
 }

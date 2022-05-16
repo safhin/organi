@@ -11,6 +11,7 @@ export default async(req: NextApiRequest, res: NextApiResponse) =>{
                 product_title: req.body.product_title,
                 product_category: req.body.product_category,
                 product_price: req.body.product_price,
+                product_image : req.body.product_image,
                 updated_at: new Date(),
             }
             const Product = await prisma.products.create({

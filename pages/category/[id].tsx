@@ -20,7 +20,7 @@ export const getServerSideProps = async(context) => {
 }
 
 
-const UpdateCategory = ({editCategory : []}) => {
+const UpdateCategory = ({editCategory}) => {
 
     const [categoryTitle, setCategoryTitle] = useState(editCategory.category_title);
     

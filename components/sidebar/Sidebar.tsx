@@ -36,7 +36,7 @@ const Sidebar = () => {
                         <li className="sidebar-title">Menu</li>
 
                         <li className="sidebar-item active ">
-                            <a href="index.html" className='sidebar-link'>
+                            <a href={'/'} className='sidebar-link'>
                                 <i className="bi bi-grid-fill"></i>
                                 <span>Dashboard</span>
                             </a>

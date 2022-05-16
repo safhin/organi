@@ -15,6 +15,7 @@ CREATE TABLE `Products` (
     `product_title` VARCHAR(191) NOT NULL,
     `product_price` VARCHAR(191) NOT NULL,
     `product_category` VARCHAR(191) NOT NULL,
+    `product_image` VARCHAR(191) NOT NULL,
     `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updated_at` DATETIME(3) NOT NULL,
 
