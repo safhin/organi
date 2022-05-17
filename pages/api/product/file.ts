@@ -1,37 +1,41 @@
-import { IncomingForm  } from 'formidable';
-import { promises as fs } from 'fs';
 
-// first we need to disable the default body parser
+import type {NextApiRequest, NextApiResponse} from 'next';
+import formidable from "formidable";
+import fs from "fs";
+
+type Data = {
+    dir: string
+}
+
+const saveFile = async (file: any, pathName: string) => {
+    const data = fs.readFileSync(file.filepath);
+    let fileName=file.originalFilename.split(' ').join('');
+    let dir = `${pathName}/${fileName}`;
+
+    fs.writeFileSync(`./public/uploaded/${pathName}/${fileName}`, data);
+    await fs.unlinkSync(file.filepath);
+    return dir;
+};
+
 export const config = {
     api: {
-        bodyParser: false,
+        bodyParser: false
     }
 };
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default async (req, res) => {
-    if (req.method === 'POST') {
-
-        // parse form with a Promise wrapper
-        const data = await new Promise((resolve, reject) => {
-            const form = new IncomingForm();
-            form.parse(req, (err, fields, files) => {
-                if (err) return reject(err);
-                resolve({ fields, files });
-            });
-        });
-
+export default async(req: NextApiRequest, res: NextApiResponse) =>{
+    if(req.method == 'POST'){
         try {
-            const imageFile = data.files.image; // .image because I named it in client side by that name: // pictureData.append('image', pictureFile);
-            const imagePath = imageFile.filepath;
-            const pathToWriteImage = `./public/upload/asd.jpg`; // include name and .extention, you can get the name from data.files.image object
-            const image = await fs.readFile(imagePath);
-            await fs.writeFile(pathToWriteImage, image);
-            //store path in DB
-            res.status(200).json('imageFile');
+            const form = new formidable.IncomingForm();
+            form.parse(req, async function (err: any, fields: any, files: any) {
+                let dir: string = await saveFile(files.file, 'product');
+                res.status(200).json({dir})
+            });
         } catch (error) {
-            res.status(500).json({ message: error.message });
-            return;
+            res.status(400).json({ message: error.message});
         }
-    };
-};
+    }else {
+        res.status(404).json({dir: ""})
+    }
+}

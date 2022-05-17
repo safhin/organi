@@ -21,7 +21,7 @@ export const getServerSideProps = async () => {
 const CreateProduct = ({Categories}) => {
 
     let [productInput,setProductInput] = useState({});
-    const [productImage,setProductImage] = useState(null);
+    // const [productImage,setProductImage] = useState(null);
 
     const handleChange = (e) => {
         const{name, value} = e.target;
@@ -44,29 +44,32 @@ const CreateProduct = ({Categories}) => {
          for ( const file of fileInput.files ) {
              formData.append('file', file);
          }
-         formData.append('upload_preset', 'organi');
-         const data = await fetch('https://api.cloudinary.com/v1_1/live-tech/image/upload', {
-             method: 'POST',
-             body: formData
-         }).then(r => r.json());
-         setProductImage(data.secure_url);
 
+         const data = await fetch('/api/product/file', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'multipart/form-data',
+            },
+            body: JSON.stringify(formData)
+        })
        
+
+        console.log(data);
+        
         productInput.product_image = data.secure_url;
 
         const response = await fetch('/api/product', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'Content-Type': 'multipart/form-data',
             },
             body: JSON.stringify(productInput)
         })
-
-        console.log(productInput);
-        
         return await response.json();
     }
-    
+
 
     return(
         <section id="basic-vertical-layouts">
