@@ -1,6 +1,31 @@
+import { useEffect } from "react";
 import FeaturedProductImg from "../../public/img/featured/feature-1.jpg";
 
 const FeaturedProduct = () => {
+
+    
+    useEffect(() => {
+        const btnElems = document.querySelectorAll('.filter-btn');
+        btnElems.forEach(function(filterBtn){
+            filterBtn.addEventListener('click', function(){
+                const filter = this.dataset.filter;
+                const allProducts = document.querySelectorAll('.mix');
+                allProducts.forEach(function(product){
+                    if(filter === '*'){
+                        product.style.display = 'block';
+                    }else{
+                        if(product.classList.contains(filter)){
+                            product.style.display = 'block';
+                        }else{
+                            product.style.display = 'none';
+                        }
+                    }
+                })
+            })
+        })
+    })
+
+
     return(
         <section className="featured spad">
           <div className="container">
@@ -11,11 +36,11 @@ const FeaturedProduct = () => {
                       </div>
                       <div className="featured__controls">
                           <ul>
-                              <li className="active" data-filter="*">All</li>
-                              <li data-filter=".oranges">Oranges</li>
-                              <li data-filter=".fresh-meat">Fresh Meat</li>
-                              <li data-filter=".vegetables">Vegetables</li>
-                              <li data-filter=".fastfood">Fastfood</li>
+                              <li className="active filter-btn" data-filter="*">All</li>
+                              <li className="filter-btn" data-filter="oranges">Oranges</li>
+                              <li className="filter-btn" data-filter="fresh-meat">Fresh Meat</li>
+                              <li className="filter-btn" data-filter="vegetables">Vegetables</li>
+                              <li className="filter-btn" data-filter="fastfood">Fastfood</li>
                           </ul>
                       </div>
                   </div>
