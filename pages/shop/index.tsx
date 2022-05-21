@@ -6,12 +6,12 @@ import 'slick-carousel/slick/slick-theme.css';
 import Slider from "react-slick";
 import ShopSidebar from "../../components/sidebar/shopSidebar";
 import { settings } from "../../utils/sliderSetting";
+import { connect } from "react-redux";
+import { addToCart } from "../../redux/cart/cartAction";
 
-const Shop = () => {
+const Shop = ({products, addToCart}) => {
 
-    const handleClick = () => {
-        console.log('Clicked');
-    }
+
     return(
         <>
             <Header/>
@@ -168,23 +168,23 @@ const Shop = () => {
                             </div>
                             <div className="row">
                                 {
-                                    [1,1,1,1,1,1,1,1,1].map((item,index) => (
-                                        <div className="col-lg-4 col-md-6 col-sm-6" key={index}>
+                                    products.map((item) => (
+                                        <div className="col-lg-4 col-md-6 col-sm-6" key={item.id}>
                                             <div className="product__item">
-                                                <div className="product__item__pic set-bg" style={{ backgroundImage: `url(img/product/product-${index}.jpg)` }}>
+                                                <div className="product__item__pic set-bg" style={{ backgroundImage: `url(${item.image})` }}>
                                                     <ul className="product__item__pic__hover">
                                                         <li><a href="#"><i className="fa fa-heart"></i></a></li>
                                                         <li><a href="#"><i className="fa fa-retweet"></i></a></li>
                                                         <li>
-                                                            <button onClick={handleClick}>
+                                                            <button onClick={() => addToCart(item.id)}>
                                                                 <i className="fa fa-shopping-cart"></i>
                                                             </button>
                                                         </li>
                                                     </ul>
                                                 </div>
                                                 <div className="product__item__text">
-                                                    <h6><a href="#">Crab Pool Security</a></h6>
-                                                    <h5>$30.00</h5>
+                                                    <h6><a href="#">{item.title}</a></h6>
+                                                    <h5>${item.price}</h5>
                                                 </div>
                                             </div>
                                         </div>
@@ -206,4 +206,16 @@ const Shop = () => {
     )
 }
 
-export default Shop;
+const mapStateToProps = (state) => {
+    return{
+        products : state.shop.products,
+    }
+}
+
+const mapDispatchToProps  = (dispatch) => {
+    return{
+        addToCart : (id) => dispatch(addToCart(id)),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Shop);

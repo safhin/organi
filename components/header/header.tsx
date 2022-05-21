@@ -1,9 +1,20 @@
 import Image from "next/image"
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { connect } from "react-redux";
 import Language from "../../public/img/language.png";
 import Logo from "../../public/img/logo.png";
 
-const Header = () => {
+const Header = ({carts}) => {
+    const [cartCount, setCartCount] = useState(0);
+    useEffect(() => {
+        let count = 0;
+        carts.forEach(item => {
+            count += item.qty
+        });
+        setCartCount(count);
+    },[cartCount, carts])
+    console.log(cartCount);
     return(
         <>
             <div className="humberger__menu__overlay"></div>
@@ -146,7 +157,7 @@ const Header = () => {
                                     <li><a href="#"><i className="fa fa-heart"></i> <span>1</span></a></li>
                                     <li>
                                         <Link href="/cart">
-                                            <a><i className="fa fa-shopping-bag"></i> <span>4</span></a>
+                                            <a><i className="fa fa-shopping-bag"></i> <span>{cartCount}</span></a>
                                         </Link>
                                     </li>
                                 </ul>
@@ -163,4 +174,11 @@ const Header = () => {
     )
 }
 
-export default Header;
+const mapStateToProps = state => {
+    return{
+        carts : state.shop.cart
+    }
+}
+
+
+export default connect(mapStateToProps)(Header);

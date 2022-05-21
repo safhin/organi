@@ -1,9 +1,18 @@
 import BreadCrumb from "../../components/breadcrumb/breadCrumb";
 import Footer from "../../components/footer/footer";
 import Header from "../../components/header/header";
-
-
-const Cart = () => {
+import { connect } from "react-redux";
+import { useEffect, useState } from "react";
+import SigneCart from "./cart";
+const Cart = ({carts}) => {
+    const [totalPrice, setTotalPrice] = useState(0);
+    useEffect(() =>{
+        let price = 0;
+        carts.forEach(item => {
+            price += item.qty * item.price;
+        });
+        setTotalPrice(price);
+    },[carts]);
     return(
         <>
             <Header/>
@@ -20,76 +29,17 @@ const Cart = () => {
                                             <th>Price</th>
                                             <th>Quantity</th>
                                             <th>Total</th>
-                                            <th></th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td className="shoping__cart__item">
-                                                <img src="img/cart/cart-1.jpg" alt=""/>
-                                                <h5>Vegetable’s Package</h5>
-                                            </td>
-                                            <td className="shoping__cart__price">
-                                                $55.00
-                                            </td>
-                                            <td className="shoping__cart__quantity">
-                                                <div className="quantity">
-                                                    <div className="pro-qty">
-                                                        <input type="text" value="1"/>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td className="shoping__cart__total">
-                                                $110.00
-                                            </td>
-                                            <td className="shoping__cart__item__close">
-                                                <span className="icon_close"></span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td className="shoping__cart__item">
-                                                <img src="img/cart/cart-2.jpg" alt=""/>
-                                                <h5>Fresh Garden Vegetable</h5>
-                                            </td>
-                                            <td className="shoping__cart__price">
-                                                $39.00
-                                            </td>
-                                            <td className="shoping__cart__quantity">
-                                                <div className="quantity">
-                                                    <div className="pro-qty">
-                                                        <input type="text" value="1"/>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td className="shoping__cart__total">
-                                                $39.99
-                                            </td>
-                                            <td className="shoping__cart__item__close">
-                                                <span className="icon_close"></span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td className="shoping__cart__item">
-                                                <img src="img/cart/cart-3.jpg" alt=""/>
-                                                <h5>Organic Bananas</h5>
-                                            </td>
-                                            <td className="shoping__cart__price">
-                                                $69.00
-                                            </td>
-                                            <td className="shoping__cart__quantity">
-                                                <div className="quantity">
-                                                    <div className="pro-qty">
-                                                        <input type="text" value="1"/>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td className="shoping__cart__total">
-                                                $69.99
-                                            </td>
-                                            <td className="shoping__cart__item__close">
-                                                <span className="icon_close"></span>
-                                            </td>
-                                        </tr>
+                                        {
+                                            carts && carts.length > 0 && carts.map((item) => (
+                                                <tr key={item.id}>
+                                                    <SigneCart  item={item}/>
+                                                </tr>
+                                            ))
+                                        }
                                     </tbody>
                                 </table>
                             </div>
@@ -118,8 +68,8 @@ const Cart = () => {
                             <div className="shoping__checkout">
                                 <h5>Cart Total</h5>
                                 <ul>
-                                    <li>Subtotal <span>$454.98</span></li>
-                                    <li>Total <span>$454.98</span></li>
+                                    <li>Subtotal <span>${totalPrice}</span></li>
+                                    <li>Total <span>${totalPrice}</span></li>
                                 </ul>
                                 <a href="#" className="primary-btn">PROCEED TO CHECKOUT</a>
                             </div>
@@ -132,4 +82,11 @@ const Cart = () => {
     )
 }
 
-export default Cart;
+const mapStateToProps = state => {
+    return{
+        carts : state.shop.cart
+    }
+}
+
+
+export default connect(mapStateToProps)(Cart);

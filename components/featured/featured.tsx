@@ -1,4 +1,7 @@
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+
+
 
 const FeaturedProduct = () => {
     useEffect(() => {
@@ -22,9 +25,7 @@ const FeaturedProduct = () => {
         })
     })
 
-    const handleClick = () => {
-        console.log('clicked');
-    }
+    const dispatch = useDispatch();
 
     return(
         <section className="featured spad">
@@ -52,7 +53,7 @@ const FeaturedProduct = () => {
                               <ul className="featured__item__pic__hover">
                                   <li><a href="#"><i className="fa fa-heart"></i></a></li>
                                   <li><a href="#"><i className="fa fa-retweet"></i></a></li>
-                                  <li><a className="cart-btn" onClick={handleClick}><i className="fa fa-shopping-cart"></i></a></li>
+                                  <li><a className="cart-btn"><i className="fa fa-shopping-cart"></i></a></li>
                               </ul>
                           </div>
                           <div className="featured__item__text">
